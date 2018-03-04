@@ -1,5 +1,7 @@
-package com.shawnclake.router;
+package com.shawnclake;
 
+import com.shawnclake.router.DirectoryRouter;
+import com.shawnclake.router.Router;
 import fi.iki.elonen.NanoHTTPD;
 
 import java.io.IOException;
@@ -19,7 +21,7 @@ public class Server extends NanoHTTPD {
         Router router = new DirectoryRouter(session);
         router.route();
 
-        String msg = "<html><body><h1>Hello server</h1>\n";
+        String msg = "<html><body>\n";
 
         try {
             for(String part : router.getFile().getEntireFile())

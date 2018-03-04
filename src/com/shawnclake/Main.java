@@ -1,10 +1,8 @@
 package com.shawnclake;
 
-import com.shawnclake.io.FileInput;
-import com.shawnclake.router.Server;
+import com.shawnclake.compiler.Directorizer;
 
 import java.io.IOException;
-import java.util.List;
 
 public class Main {
 
@@ -16,6 +14,11 @@ public class Main {
         {
             System.out.println(temp);
         }*/
+
+
+        Directorizer directorizer = new Directorizer();
+        directorizer.compile();
+
 
         try {
             Server server = new Server(8080);

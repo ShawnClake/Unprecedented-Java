@@ -18,6 +18,8 @@ abstract public class Router {
 
     protected FileRead file;
 
+    protected ArrayList<String> parameterHandlers = new ArrayList<>();
+
     public Router(NanoHTTPD.IHTTPSession session) {
 
         this.uriIgnores.add("favicon.ico"); // Stop this POST request from going through this system

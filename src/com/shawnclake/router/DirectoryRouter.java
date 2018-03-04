@@ -6,11 +6,9 @@ import com.shawnclake.morgencore.core.component.filesystem.Files;
 import com.shawnclake.morgencore.core.component.property.Properties;
 import fi.iki.elonen.NanoHTTPD;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class DirectoryRouter extends Router {
-
 
     public DirectoryRouter(NanoHTTPD.IHTTPSession session) {
         super(session);
@@ -48,6 +46,13 @@ public class DirectoryRouter extends Router {
             System.out.println(contents);
 
             // TODO: logic for var.unp, index.unp, help.unp, params.unp goes here
+
+            if(contents.contains("params.unp"))
+            {
+                System.out.println("params found");
+                this.parameterHandlers.add(path + "/params.unp");
+            }
+
 
             // Handles vars as we need to
             if(contents.contains("var.unp"))
