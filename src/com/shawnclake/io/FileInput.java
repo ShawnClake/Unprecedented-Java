@@ -1,7 +1,18 @@
+/**
+ * FileInput
+ * Used for easy file input
+ * Author: Shawn Clake
+ * Maintainer: Shawn Clake
+ * https://github.com/ShawnClake
+ * Originally created for use in the 'Unprecedented Project'
+ * Covered under the GNU license
+*/
+
 package com.shawnclake.io;
 
 import java.io.IOException;
-import java.nio.file.Paths;
+import java.nio.charset.Charset;
+import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -28,6 +39,12 @@ public final class FileInput {
         if(file.hasNextLine())
             return file.nextLine();
         return "";
+    }
+
+    public static List<String> getEntireFile() throws IOException
+    {
+        Path filepath = FileSystems.getDefault().getPath(path);
+        return Files.readAllLines(filepath, Charset.defaultCharset());
     }
 
     public static List<String> getRemainderOfFile()
