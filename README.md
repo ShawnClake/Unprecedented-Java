@@ -1,46 +1,22 @@
 # Unprecedented-Java
 The remake of my Unprecedented compiler using Java instead of C++
 
-Unprecedented is a WIP. It is not currently functional and is in its initial development.
-
-Prototyping ETA: January 1st.
-
-ETA's are not final and are subject to minor or drastic change. They simply exist to give an idea of activity.
-
 ## Summary
+Unprecedented (unp) features four distinct functions
+1. (RUNP)  Routing
+2. (CUNP)  Compiling
+3. (DIUNP) Dynamic Interpretation
+4. (WSUNP) Web Server
 
-=================================================
-                UNPRECEDENTED
-	  An Unprecedented approach to web dev
-	      Original Author: Shawn Clake
-	    Official Maintainer: Shawn Clake
-		  Registered under: GNU license
-		     Main Version: V0.00.01
-=================================================
+Additionally, unp can be used as a flexible quick dev approach to modern web development. Components are built your way without worrying about the language or any driver building.
 
-To the reader,
+UNP makes it possible to quickly deploy flexible API's which incorporate API documentation from the get-go
 
-This is not yet a functional program. It is still in initial development.
-I hope to have a working prototype by June 30th however that is subject
-  to minor or drastic change.
+Server side logic is simple with the proper driver installed. For example, boot up your PHP server, and run UNP with the UNP_PHP driver and UNP handles any bridging required.
 
-Please feel free to add pull requests for changes to my code. If something
-  is badly coded or unoptomized please let me know, but also provide a why
-  and a method to fix the problem.
+Additionally, you can choose to use some or all of UNP's distinct functions. Just want to use the UNP compiler? That's fine! Want to use the UNP router? That's fine too! Want to use UNP to host your website or RESTful API? That's works great too.
 
-This is my first major project which has gone through months of vigerous
-  planning and organizing. I am new to github, so please go easy on me
-  with respect to major project structure and github structure.
-
-Thanks,
-Shawn Clake
-
-
-
- ***
-Unprecedented is best explained by seeing it in action. If I feel interested
-  at some point, I will try and detail a description of what unprecedented is.
-
-Source File commenting... in progress......
- ***
+What can't UNP do?
+* UNP does not, and will not integrate well with full fledged server side frameworks when using the Routing and Web Server capabilities
+* UNP does not provide interpretation support without also using the Web Server capability
 
