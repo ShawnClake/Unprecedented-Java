@@ -1,11 +1,12 @@
 package com.shawnclake.router;
 
 import com.shawnclake.morgencore.core.component.DynamicPrimitive;
+import com.shawnclake.morgencore.core.component.filesystem.FileMeta;
 import com.shawnclake.morgencore.core.component.filesystem.FileRead;
 import com.shawnclake.morgencore.core.component.filesystem.Files;
-import com.shawnclake.morgencore.core.component.property.Properties;
 import fi.iki.elonen.NanoHTTPD;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class DirectoryRouter extends Router {
@@ -26,7 +27,7 @@ public class DirectoryRouter extends Router {
         //String path = this.pathToSrc;
         String path = this.pathToSrc;
 
-        Properties properties = new Properties();
+        //Properties properties = new Properties();
 
         while(i < totalComponents)
         {
@@ -71,7 +72,12 @@ public class DirectoryRouter extends Router {
 
                 System.out.println(this.uriComponents.get(i));
 
-                properties.add("prop"+i, new DynamicPrimitive(this.uriComponents.get(i)));
+                File varFile = new File(path + "/var.unp");
+                FileMeta fileMeta = new FileMeta(varFile);
+                fileMeta.add("value", new DynamicPrimitive(this.uriComponents.get(i)));
+                this.varHandlers.put(path + "/var.unp", fileMeta);
+
+                //properties.add("prop"+i, new DynamicPrimitive(this.uriComponents.get(i)));
             }
 
             if(i == totalComponents - 1 && "help".equals(this.uriComponents.get(i)))
@@ -111,9 +117,15 @@ public class DirectoryRouter extends Router {
             i++;
         }
 
-        for(DynamicPrimitive prop : properties.getProperties().values())
+        /*for(DynamicPrimitive prop : properties.getProperties().values())
         {
             System.out.println(prop.getInt());
+        }*/
+
+        for(FileMeta fileMeta : this.varHandlers.values())
+        {
+            //System.out.println(var.getProperty(File.class));
+            System.out.println(fileMeta.get("value").getString());
         }
 
         if(files.isDirectory(path))

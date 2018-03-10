@@ -1,9 +1,17 @@
 package com.shawnclake;
 
+import com.shawnclake.morgencore.core.component.html.HtmlBuilder;
+import com.shawnclake.morgencore.core.component.html.attributes.Attribute;
+import com.shawnclake.morgencore.core.component.html.attributes.Style;
+import com.shawnclake.morgencore.core.component.html.components.TagComponent;
+import com.shawnclake.morgencore.core.component.html.components.TextComponent;
+import com.shawnclake.morgencore.core.component.html.tags.RenderedTag;
+import com.shawnclake.morgencore.core.component.html.tags.TagBuilder;
 import com.shawnclake.router.DirectoryRouter;
 import com.shawnclake.router.Router;
 import fi.iki.elonen.NanoHTTPD;
 
+import javax.swing.text.html.HTML;
 import java.io.IOException;
 import java.util.Map;
 
@@ -22,6 +30,13 @@ public class Server extends NanoHTTPD {
         router.route();
 
         String msg = "<html><body>\n";
+
+        HtmlBuilder htmlBuilder = new HtmlBuilder(new TextComponent("what up")).append(new TextComponent("big cheeseburger butts"));
+
+        htmlBuilder.append(new TagComponent(TagBuilder.build(HTML.Tag.STRONG).addAttribute(new Style().add("font-size", "45px").add("color","red")).getTag().getFullTag(new TextComponent("I kinda hope this works"))));
+
+        msg += htmlBuilder.getHtml().getHtmlString();
+
 
         try {
             for(String part : router.getFile().getEntireFile())

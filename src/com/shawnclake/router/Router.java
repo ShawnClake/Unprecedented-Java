@@ -1,10 +1,12 @@
 package com.shawnclake.router;
 
 import com.shawnclake.morgencore.core.component.Collections;
+import com.shawnclake.morgencore.core.component.filesystem.FileMeta;
 import com.shawnclake.morgencore.core.component.filesystem.FileRead;
 import fi.iki.elonen.NanoHTTPD;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 abstract public class Router {
 
@@ -19,6 +21,8 @@ abstract public class Router {
     protected FileRead file;
 
     protected ArrayList<String> parameterHandlers = new ArrayList<>();
+
+    protected HashMap<String, FileMeta> varHandlers = new HashMap<>();
 
     public Router(NanoHTTPD.IHTTPSession session) {
 
