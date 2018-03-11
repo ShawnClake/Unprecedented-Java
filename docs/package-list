@@ -1,5 +1,6 @@
 com.shawnclake
 com.shawnclake.compiler
+com.shawnclake.components
 com.shawnclake.io
 com.shawnclake.optimizer
 com.shawnclake.router
