@@ -10,6 +10,7 @@ import com.shawnclake.morgencore.core.component.html.attributes.Style;
 import com.shawnclake.morgencore.core.component.html.components.*;
 import com.shawnclake.morgencore.core.component.html.libraries.ExternalHtmlLibrary;
 import com.shawnclake.morgencore.core.component.html.libraries.HtmlLibraryType;
+import com.shawnclake.morgencore.core.component.html.parsing.DynamicHtml;
 import com.shawnclake.morgencore.core.component.html.tags.TagBuilder;
 import com.shawnclake.router.DirectoryRouter;
 import com.shawnclake.router.Router;
@@ -17,6 +18,8 @@ import fi.iki.elonen.NanoHTTPD;
 
 import javax.swing.text.html.HTML;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Server extends NanoHTTPD {
 
@@ -66,6 +69,10 @@ public class Server extends NanoHTTPD {
         container.append(new TestComponent());
 
         htmlPageBuilder.appendBody(new TagComponent(new TagBuilder(HTML.Tag.DIV).addAttribute(new Class("container")).getFullTag(container)));
+
+        DynamicHtml dynamicHtml = new DynamicHtml("<p>I am some bullshit {{ shit }}, but that's okay I don't care that {{ much }} :)");
+        dynamicHtml.compileVariables(new HashMap<>(Map.of("shit","human guy", "much", "guy is a dumby")));
+        htmlPageBuilder.appendBody(new HtmlComponent(dynamicHtml));
 
         //htmlBuilder.append(new StyleImportComponent(new ExternalHtmlLibrary("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css")));
         //htmlBuilder.append(new ScriptImportComponent(new ExternalHtmlLibrary("https://code.jquery.com/jquery-3.2.1.slim.min.js")));
